@@ -2,24 +2,26 @@ const Book = require('../model/bookingModel')
 
 const bookingController = {
     createBooking: async (req, res) => {
+        
         try {
-            const {name, cityName, cityId, price, bookingDate} = req.body
+            const {name, city,  price, date,days} = req.body
             const booking = new Book({
-                userid: req.user._id,
-                name, cityName, cityId, price, bookingDate
+                userid: req.user.id,
+                name, city,  price, days,date
             })
             await booking.save();
-            res.status(201).json({msg: "Booked"})
+            res.json({booking})
         } catch (err) {
             return res.status(400).json({ msg: err.message })
         }
     },
     getAllBooking: async (req, res) => {
         try {
-            const Booking = await Book.find()
-            if(!Booking)
-                return res.status(400).json({msg:"No booking yet"})
-            res.json(Booking)
+          
+            const Bookings = await Book.find()
+            if(!Bookings)      return res.status(400).json({msg:"No booking yet"})
+          
+            res.json({Bookings})
 
         } catch (err) {
             return res.status(400).json({ msg: err.message })

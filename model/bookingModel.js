@@ -9,25 +9,22 @@ const bookingSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    cityName: {
+    city: {
         type: String,
         required: true,
       },
-      cityId: {
-        type: String,
-        required: true,
-      },
+    
       price: {
         type: String,
         required: true,
       },
-      bookingDate: {
+      date: {
         type: Date,
         required: true,
       },
-      bookedDate: {
-        type: Date,
-        default: new Date(),
+      days: {
+        type: Number,
+        required: true,
       },
       isAccepted: {
         type: Boolean,

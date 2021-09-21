@@ -8,6 +8,7 @@ const auth = (req,res,next) => {
             if(err) return res.status(400).json({msg:"Invalid Authentication token"})
             
             req.user = user
+
             next()
         })
     }catch(err){
