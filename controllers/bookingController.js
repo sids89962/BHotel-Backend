@@ -26,7 +26,19 @@ const bookingController = {
         } catch (err) {
             return res.status(400).json({ msg: err.message })
         }
+    },
+    setBooking:async (req,res) => {
+        try{
+           const {id,value} = req.body
+           const booking = await Book.findByIdAndUpdate(id , {isAccepted:value}        
+           )   
+          const update=  await booking.save()
+           res.json({update})
+        }catch (err) {
+            return res.status(400).json({ msg: err.message })
+        }
     }
+
 }
 
 module.exports = bookingController
