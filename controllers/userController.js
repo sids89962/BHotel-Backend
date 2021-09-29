@@ -6,33 +6,24 @@ const jwt = require('jsonwebtoken')
 
 const userController = {
     register: async (req, res) => {
-        const { name, email, password } = req.body
-
+        const { name, email, password } = req.body;
         try {
             const ifExist = await Users.findOne({ email: email })
             if (ifExist) return res.status(500).json({ msg: "User already exists" })
-
-
             if (password.length < 6)
                 return res.status(400).json({ msg: "The password is too short" })
-
             const hashedPass = await bcrypt.hash(password, 12)
             const user = new Users({
                 name, email, password: hashedPass
             })
             await user.save()
-
             //JSONWEBTOKEN Authentication
-
             const accesstoken = createAccessToken({ id: user._id })
             const refreshtoken = createRefreshToken({ id: user._id })
-
             res.cookie('refreshtoken', refreshtoken, {
-                httpOnly: true,
-                
+                httpOnly: true,                
                 maxAge: 7 * 24 * 60 * 60 * 1000
-            })
-           
+                        })
             res.json({ accesstoken })
         } catch (err) {
             console.log(err)
