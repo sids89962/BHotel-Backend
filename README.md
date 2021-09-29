@@ -1,5 +1,6 @@
 # BHotel-Backend
 BHotel is a website which allows user to book hotel in their city of choice or type of travel. BHotel also provides the features to sort on basis on price .
+<hr>
 
 <h3>Approach for JWT authetication</h3>
  Used refresh and access tokens for authetication
