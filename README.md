@@ -4,7 +4,8 @@ BHotel is a website which allows user to book hotel in their city of choice or t
 
 <h3>Approach for JWT authetication</h3>
  Used refresh and access tokens for authetication
- 
+ ![Capturesss](https://user-images.githubusercontent.com/45875736/135300913-741ed62a-2f77-483e-924e-bf51af8aaeb9.PNG)
+
 
 <hr>
 <h3>NPM packages used</h3>
